@@ -3,3 +3,4 @@ dist
 .vscode
 coverage
 archicteture.jpg
+globalConfig.json
