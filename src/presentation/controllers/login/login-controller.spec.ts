@@ -49,7 +49,7 @@ const makeSut = (): SutTypes => {
 }
 
 describe('Login Controller', () => {
-  test('Should call EmailValidator with correct email', async () => {
+  test('Should call Authentication with correct email', async () => {
     const { sut, authenticationStab } = makeSut()
     const authSpy = jest.spyOn(authenticationStab, 'auth')
     await sut.handle(makeFakeRequest())
