@@ -17,6 +17,6 @@ export class AddSurveyController implements Controller {
       question,
       answers
     })
-    return await new Promise(resolve => resolve(null))
+    return null
   }
 }
