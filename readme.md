@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ramonalves/node-api-tdd-solid-ddd.svg?branch=main)](https://travis-ci.org/ramonalves/node-api-tdd-solid-ddd)
+[![Coverage Status](https://coveralls.io/repos/github/ramonalves/node-api-tdd-solid-ddd/badge.svg)](https://coveralls.io/github/ramonalves/node-api-tdd-solid-ddd)
 
 > ## APIs construídas 
 
