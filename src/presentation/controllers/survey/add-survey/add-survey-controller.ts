@@ -1,4 +1,4 @@
-import { badRequest, noContent, serverError } from '../../../helpers/http/http-helper'
+import { badRequest, created, serverError } from '../../../helpers/http/http-helper'
 import { Controller, HttpRequest, HttpResponse, Validation, AddSurvey } from './add-survey-controller-protocols'
 
 export class AddSurveyController implements Controller {
@@ -19,7 +19,7 @@ export class AddSurveyController implements Controller {
         answers,
         date: new Date()
       })
-      return noContent()
+      return created()
     } catch (error) {
       return serverError(error)
     }
