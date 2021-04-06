@@ -1,6 +1,6 @@
 import Mockdate from 'mockdate'
 import { SurveyResultModel, SaveSurveyResultModel, SaveSurveyResultRepository } from './db-save-survey-result-protocols'
-import { DbSaveSurveyResultSurvey } from './db-save-survey-result'
+import { DbSaveSurveyResult } from './db-save-survey-result'
 
 const makeFakeSurveyResultData = (): SaveSurveyResultModel => ({
   accountId: 'any_account_id',
@@ -23,19 +23,19 @@ const makeSaveSurveyResultRepository = (): SaveSurveyResultRepository => {
 }
 
 type SutTypes = {
-  sut: DbSaveSurveyResultSurvey
+  sut: DbSaveSurveyResult
   saveSurveyResultRepositoryStub: SaveSurveyResultRepository
 }
 
 const makeSut = (): SutTypes => {
   const saveSurveyResultRepositoryStub = makeSaveSurveyResultRepository()
-  const sut = new DbSaveSurveyResultSurvey(saveSurveyResultRepositoryStub)
+  const sut = new DbSaveSurveyResult(saveSurveyResultRepositoryStub)
   return {
     sut,
     saveSurveyResultRepositoryStub
   }
 }
-describe('DbSaveSurveyResultSurvey Usecase', () => {
+describe('DbSaveSurveyResult Usecase', () => {
   beforeAll(() => {
     Mockdate.set(new Date())
   })
