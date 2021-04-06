@@ -12,8 +12,7 @@ const makeAccessToken = async (): Promise<string> => {
   const res = await accountCollection.insertOne({
     name: 'Ramon',
     email: 'ramon_agn@outlook.com',
-    password: 123,
-    role: 'admin'
+    password: 123
   })
   const id = res.ops[0]._id
   const accessToken = sign({ id }, env.jwtSecret)
@@ -43,53 +42,35 @@ describe('Survey Routes', () => {
     await accountCollection.deleteMany({})
   })
 
-  describe('POST /surveys', () => {
-    test('Should return 403 on add survey without accessToken', async () => {
+  describe('PUT /surveys/:surveyId/results', () => {
+    test('Should return 403 on save survey result without accessToken', async () => {
       await request(app)
-        .post('/api/surveys')
+        .put('/api/surveys/any_id/results')
         .send({
-          question: 'question',
-          answers: [{
-            answer: 'Answer 1',
-            image: 'http://image-name.com'
-          }, {
-            answer: 'Answer 2'
-          }]
+          answer: 'any_answer'
         })
         .expect(403)
     })
 
-    test('Should return 204 on add survey with valid accessToken', async () => {
+    test('Should return 200 on save survey result with accessToken', async () => {
       const accessToken = await makeAccessToken()
+      const res = await surveyCollection.insertOne({
+        question: 'question',
+        answers: [{
+          answer: 'Answer 1',
+          image: 'http://image-name.com'
+        }, {
+          answer: 'Answer 2'
+        }]
+      })
+      const surveyId: string = res.ops[0]._id
       await request(app)
-        .post('/api/surveys')
+        .put(`/api/surveys/${surveyId}/results`)
         .set('x-access-token', accessToken)
         .send({
-          question: 'question',
-          answers: [{
-            answer: 'Answer 1',
-            image: 'http://image-name.com'
-          }, {
-            answer: 'Answer 2'
-          }]
+          answer: 'Answer 1'
         })
-        .expect(201)
-    })
-  })
-
-  describe('GET /surveys', () => {
-    test('Should return 403 on load surveys without accessToken', async () => {
-      await request(app)
-        .get('/api/surveys')
-        .expect(403)
-    })
-
-    test('Should return 204 on load with valid accessToken', async () => {
-      const accessToken = await makeAccessToken()
-      await request(app)
-        .get('/api/surveys')
-        .set('x-access-token', accessToken)
-        .expect(204)
+        .expect(200)
     })
   })
 })
