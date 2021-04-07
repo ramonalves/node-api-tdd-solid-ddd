@@ -1,4 +1,7 @@
-POST http://localhost:5050/api/signup
+@baseUrl = http://localhost:5050/api
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNmJiNTNlMjFmYjljM2ViODAzYzY5NCIsImlhdCI6MTYxNzczMDExMn0.FeG2xzGt3iUyoZPhClcEJdc5l5mHCfHtu7AnejPKeyA
+
+POST {{baseUrl}}/signup
 Content-Type: application/json
 
 {
@@ -10,7 +13,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5050/api/login
+POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
@@ -20,8 +23,8 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5050/api/surveys
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNmJiNTNlMjFmYjljM2ViODAzYzY5NCIsImlhdCI6MTYxNzczMDExMn0.FeG2xzGt3iUyoZPhClcEJdc5l5mHCfHtu7AnejPKeyA
+POST {{baseUrl}}/surveys
+x-access-token: {{token}}
 Content-Type: application/json
 
 {
@@ -35,13 +38,13 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5050/api/surveys 
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNmJiNTNlMjFmYjljM2ViODAzYzY5NCIsImlhdCI6MTYxNzczMDExMn0.FeG2xzGt3iUyoZPhClcEJdc5l5mHCfHtu7AnejPKeyA
+GET {{baseUrl}}/surveys 
+x-access-token: {{token}}
 
 ###
 
-PUT http://localhost:5050/api/surveys/606bb64921fb9c3eb803c695/results
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNmJiNTNlMjFmYjljM2ViODAzYzY5NCIsImlhdCI6MTYxNzczMDExMn0.FeG2xzGt3iUyoZPhClcEJdc5l5mHCfHtu7AnejPKeyA
+PUT {{baseUrl}}/surveys/606bb64921fb9c3eb803c695/results
+x-access-token: {{token}}
 Content-Type: application/json
 
 {
