@@ -1,5 +1,5 @@
-export const unauthorized = {
-  description: 'Credenciais inválidas',
+export const serverError = {
+  description: 'Erro interno no servidor',
   content: {
     'application/json': {
       schema: {

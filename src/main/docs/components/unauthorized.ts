@@ -1,5 +1,5 @@
-export const serverError = {
-  description: 'Problema no servidor',
+export const unauthorized = {
+  description: 'Credenciais inválidas',
   content: {
     'application/json': {
       schema: {
