@@ -1,6 +1,6 @@
 {
   "name": "node-api-clean-architecture",
-  "version": "2.5.5",
+  "version": "2.6.0",
   "description": "NodeJS Rest API using TDD, Clean Architecture, Typescript e DDD",
   "author": "Ramon Alves",
   "main": "index.js",
